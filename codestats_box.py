@@ -42,13 +42,13 @@ VALUE_FORMAT = {
     STATS_TYPE_XP: "{xp:>9,} XP",
 }
 GIST_TITLE = {
-    STATS_TYPE_LEVEL: "💻 My Code::Stats XP (Top Languages)",
-    STATS_TYPE_RECENT_XP: "💻 My Code::Stats XP (Recent Languages)",
-    STATS_TYPE_XP: "💻 My Code::Stats XP (Top Languages)",
+    STATS_TYPE_LEVEL: "🧑🏻‍💻 My Code::Stats XP (Top Languages)",
+    STATS_TYPE_RECENT_XP: "🧑🏻‍💻 My Code::Stats XP (Recent Languages)",
+    STATS_TYPE_XP: "🧑🏻‍💻 My Code::Stats XP (Top Languages)",
 }
 # Other configurable values
 TOP_LANGUAGES_COUNT = 10
-WIDTH_JUSTIFICATION_SEPARATOR = ":"
+WIDTH_JUSTIFICATION_SEPARATOR = " "
 RECENT_STATS_SEPARATOR = " + "
 TOTAL_XP_TITLE = "Total XP"
 NO_RECENT_XP_LINES = [
