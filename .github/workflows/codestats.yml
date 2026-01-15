@@ -1,24 +1,36 @@
 name: Update gist with Code::Stats stats
+
 on:
   push:
     branches:
       - master
   schedule:
     - cron: "0 */3 * * *"
+  workflow_dispatch:
+
 jobs:
   update-gist:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@master
-      - name: Setup Python
-        uses: actions/setup-python@v2
+      - uses: actions/checkout@v4
+
+      - name: Install uv
+        uses: astral-sh/setup-uv@v5
         with:
-          python-version: 3.8
+          enable-cache: true
+          cache-dependency-glob: "uv.lock"
+
+      - name: Set up Python
+        run: uv python install 3.14
+
       - name: Install dependencies
-        run: pip install -r requirements.txt
+        run: uv sync
+
       - name: Update gist
-        run: python codestats_box.py
         env:
           GH_TOKEN: ${{ secrets.GH_TOKEN }}
           GIST_ID: f55509ffa64404b42b41d070abbe75f6
           CODE_STATS_USERNAME: ${{ github.repository_owner }}
+          STATS_TYPE: level-xp
+          LOG_LEVEL: INFO
+        run: uv run codestats-box
